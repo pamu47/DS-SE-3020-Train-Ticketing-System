@@ -13,7 +13,7 @@ export default class Home extends Component{
             <div className="col-2"></div>
                 <div className="col-8">
                   <div class="card text-center">
-                    <div class="card-header">
+                    <div class="card-header" style={{backgroundColor:"LightGray"}}>
                       Welcome
                     </div>
                     <div class="card-body">
@@ -22,7 +22,7 @@ export default class Home extends Component{
                       <Link to="/signin" class="btn btn-success" style={{marginRight:15}}>Sign in</Link>
                       <Link to="/signup" class="btn btn-info">Sign up</Link>
                     </div>
-                    <div class="card-footer text-muted">
+                    <div class="card-footer text-muted" style={{backgroundColor:"LightGray"}}>
                       {date}
                     </div>
                   </div>
