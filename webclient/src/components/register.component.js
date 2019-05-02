@@ -14,19 +14,19 @@ export default class Register extends Component {
                             <form>
                                 <div className="form-group">
                                     <label>Full Name : </label>
-                                    <input className="form-control" type="text"/>
+                                    <input className="form-control" type="text" name="full_name" />
                                 </div>
                                 <div className="form-group">
                                     <label>Email : </label>
-                                    <input className="form-control" type="email"/>
+                                    <input className="form-control" type="email" name="email" />
                                 </div>
                                 <div className="form-group">
                                     <label>Username : </label>
-                                    <input className="form-control" type="text"/>
+                                    <input className="form-control" type="text" name="username" />
                                 </div>
                                 <div className="form-group">
                                     <label>Password : </label>
-                                    <input className="form-control" type="password"/>
+                                    <input className="form-control" type="password" name="password" />
                                 </div>
                                 <div className="form-group">
                                     <input className="btn btn-success" type="submit" value="Sign up"/>
