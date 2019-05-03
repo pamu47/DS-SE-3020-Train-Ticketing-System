@@ -73,4 +73,21 @@ users.post('/signin', (req,res) => {
     })
 })
 
+users.get('/profile', (req,res) => {
+    const decode = webtoken.verify(req.headers['authorization'], process.env.SECRET_KEY)
+    User.findOne({
+        _id: decode._id
+    })
+    .then( user => {
+        if(user){
+            res.json(user)
+        }else{
+            res.send("User does not exists")
+        }
+    })
+    .catch( err => {
+        res.send('error: '+err)
+    })
+})
+
 module.exports = users
