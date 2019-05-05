@@ -12,9 +12,9 @@ process.env.SECRET_KEY = 'secret'
 
 users.post('/signup', (req,res) => {
     const userData = {
-        fullName : req.body.full_name,
+        full_name : req.body.full_name,
         email : req.body.email,
-        userName : req.body.username,
+        username : req.body.username,
         password : req.body.password
     }
 
