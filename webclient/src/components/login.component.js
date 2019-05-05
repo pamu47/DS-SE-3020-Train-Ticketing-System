@@ -1,6 +1,36 @@
 import React, {Component} from "react";
+import { login } from "./functions";
 
 export default class Login extends Component {
+    constructor(){
+        super()
+        this.state = {
+            email : '',
+            password : ''
+        }
+        this.onChange = this.onChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
+    }
+
+    onChange(e){
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    onSubmit(e){
+        e.preventDefault();
+        const user = {
+            email : this.state.email,
+            password : this.state.password
+        }
+
+        login(user).then(res => {
+            if(res){
+                this.props.history.push(`/profile`)
+            }
+        })
+    }
+
+
 
     render() {
         return (
@@ -11,14 +41,14 @@ export default class Login extends Component {
                         <div className="jumbotron">
                             <h1 className="display-5">Sign in..</h1>
                             <hr className="my-4"></hr>
-                            <form>
+                            <form noValidate onSubmit={this.onSubmit}>
                                 <div className="form-group">
-                                    <label>Username : </label>
-                                    <input className="form-control" type="text"/>
+                                    <label>Email : </label>
+                                    <input type="email" className="form-control" name="email" placeholder="Email" value={this.state.email} onChange={this.onChange}/>
                                 </div>
                                 <div className="form-group">
                                     <label>Password : </label>
-                                    <input className="form-control" type="password"/>
+                                    <input className="form-control" type="password" placeholder="password" name="password" value={this.state.password} onChange={this.onChange}/>
                                 </div>
                                 <div className="form-group">
                                     <input className="btn btn-success" type="submit" value="Sign in"/>
