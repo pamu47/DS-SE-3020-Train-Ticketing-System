@@ -20,9 +20,11 @@ mongoose.connect(mongoURI, {useNewUrlParser : true})
         .catch(err => console.log('Error while connecting to mongodb : '+err))
 
 const Users = require('./routes/Users')
+const Booking = require('./routes/Reservations')
 
 //Routes
 app.use('/users',Users)
+app.use('/reservation', Booking)
 
 app.listen(port, ()=> {
     console.log("Server running on port "+port)
