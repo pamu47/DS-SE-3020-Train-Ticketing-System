@@ -28,3 +28,17 @@ export const login = user => {
             console.log(err)
         })
 }
+
+export const reserve = newBooking => {
+    return axios
+        .post('/reservation' ,{
+            full_name : newBooking.full_name,
+            email : newBooking.email,
+            from : newBooking.from,
+            to : newBooking.to,
+            nic : newBooking.nic
+        })
+        .then(res => {
+            console.log(newBooking)
+        })
+}
