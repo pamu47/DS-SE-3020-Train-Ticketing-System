@@ -21,10 +21,12 @@ mongoose.connect(mongoURI, {useNewUrlParser : true})
 
 const Users = require('./routes/Users')
 const Booking = require('./routes/Reservations')
+const Tickets = require('./routes/Tickets')
 
 //Routes
 app.use('/users',Users)
 app.use('/reservation', Booking)
+app.use('/ticket', Tickets)
 
 app.listen(port, ()=> {
     console.log("Server running on port "+port)
