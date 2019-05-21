@@ -21,8 +21,8 @@ reservations.post('/', (req,res) => {
 
     Booking.create(bookingData)
         .then(user => {
-            //Pre defined message when reservation success
-            const msg = 'Your reservation from '+bookingData.from+' to '+bookingData.to+' is successful.'
+            //Pre defined message when reservation take place.
+            const msg = 'You are one step away from completing reservation '+bookingData.from+' to '+bookingData.to+' .'
             console.log(bookingData.tel_no)
             client.messages
             .create({
