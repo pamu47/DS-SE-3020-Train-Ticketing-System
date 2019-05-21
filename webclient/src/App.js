@@ -8,6 +8,7 @@ import Home from './components/home.component'
 import Login from './components/login.component'
 import Register from './components/register.component'
 import Profile from './components/profile.component'
+import Checkout from './components/checkout.component'
 	
 class App extends Component {
 
@@ -41,6 +42,7 @@ class App extends Component {
         <Route path="/signin" component={Login} />
         <Route path="/signup" component={Register}/>
         <Route path="/profile" component={Profile} /> 
+        <Route path="/checkout" component={Checkout} />
       </div>
       </Router>
     );

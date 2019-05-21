@@ -34,6 +34,7 @@ export const reserve = newBooking => {
         .post('/reservation' ,{
             full_name : newBooking.full_name,
             email : newBooking.email,
+            tel_no : newBooking.tel_no,
             from : newBooking.from,
             to : newBooking.to,
             nic : newBooking.nic
