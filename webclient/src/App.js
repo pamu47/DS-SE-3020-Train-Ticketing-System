@@ -28,12 +28,6 @@ class App extends Component {
               <li className="nav-item active">
                 <Link to="/" className="nav-link">Home <span className="sr-only">(current)</span></Link>
               </li>
-              <li className="nav-item">
-                <Link to="/create" className="nav-link">Reserve</Link>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Pricing</a>
-              </li>
             </ul>
           </div>
         </nav>
