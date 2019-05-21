@@ -155,7 +155,7 @@ export default class Checkout extends React.Component {
                             </button>
                     </StripeCheckout>
                 </p>
-                <p class="card-text"><small class="text-muted">{localStorage.getItem("tel_no")}</small></p>
+                <p class="card-text"><small class="text-muted"></small></p>
                 </div>
             </div>
             <div class="card text-center">
