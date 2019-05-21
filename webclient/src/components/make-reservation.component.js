@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import jwt_decode from 'jwt-decode'
+//import axios from 'axios'
 import { reserve } from "./functions";
 import '../App.css'
 
@@ -12,17 +13,20 @@ export default class MakeReservation extends Component{
             full_name : '',
             email : '',
             tel_no : '',
-            from : '',
-            to : '',
+            from : 'Kandy',
+            to : 'Fort',
             nic : ''
         }
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
+        this.onTelChange = this.onTelChange.bind(this)
+        localStorage.setItem("from", this.state.from)
+        localStorage.setItem("to", this.state.to)
     }
 
     onChange(e){
         this.setState({[e.target.name]: e.target.value})
-
+        localStorage.setItem([e.target.name], e.target.value)
         var radio = document.getElementsByName('optionRadios');
         if (radio[0].checked){
             document.getElementById('div1').style.display = 'block';
@@ -30,6 +34,12 @@ export default class MakeReservation extends Component{
             document.getElementById('div1').style.display = 'none';
         }
         
+    }
+    onTelChange(e){
+        this.setState({
+            tel_no : e.target.value
+        })
+        localStorage.setItem("tel_no", this.state.tel_no)
     }
 
     onSubmit(e){
@@ -43,8 +53,18 @@ export default class MakeReservation extends Component{
             nic : this.state.nic
         }
 
+        // var access_key = 'ccee5511ed486d32896a5febdc6a26a9';
+        // var phone_number = this.state.tel_no;
+        // axios.get('http://apilayer.net/api/validate?access_key=ccee5511ed486d32896a5febdc6a26a9&number=61384579631&country_code=&format=1')
+        //             .then(res=>{
+                        
+        //                 console.log(res.valid);
+        //                 console.log(res.country_code);
+        //                 console.log(res.carrier);
+        //             })
+
         reserve(booking).then(res => {
-            this.props.history.push(`/`)
+            this.props.history.push(`/checkout`)
             
         })
     }
@@ -53,6 +73,7 @@ export default class MakeReservation extends Component{
         const token = localStorage.usertoken
         const decode = jwt_decode(token)
         this.setState({
+            _id : decode._id,
             full_name : decode.full_name,
             email : decode.email,
             username : decode.username
@@ -79,15 +100,15 @@ export default class MakeReservation extends Component{
                                 </div>
                                 <div className="form-group">
                                     <label>Telephone Number : </label>
-                                    <input className="form-control" type="text" name="tel_no" value={this.state.tel_no} onChange={this.onChange}/>
+                                    <input className="form-control" type="text" name="tel_no" value={this.state.tel_no} onChange={this.onTelChange}/>
                                 </div>
                                 <div className="form-group">
                                     <label>From : </label>
-                                    <input className="form-control" name="from" type="text" value={this.state.from} onChange={this.onChange}/>
+                                    <input className="form-control" type="text" name="from" value={this.state.from}  onChange={this.onChange} />
                                 </div>
                                 <div className="form-group">
                                     <label>To : </label>
-                                    <input className="form-control" name="to" type="text" value={this.state.to} onChange={this.onChange}/>
+                                    <input className="form-control" type="text" name="to" value={this.state.to}  onChange={this.onChange} />
                                 </div>
                                 <div className="form-group">
                                     <label>Are you a goverment employee?</label>
@@ -107,7 +128,7 @@ export default class MakeReservation extends Component{
                                     <input className="form-control" type="text" name="nic" value={this.state.nic} onChange={this.onChange}/>
                                 </div>
                                 <div className="form-group">
-                                    <input className="btn btn-success" type="submit" value="Proceed"/>
+                                    <button className="btn btn-success">Proceed</button>
                                 </div>
                             </form>
                         </div>
