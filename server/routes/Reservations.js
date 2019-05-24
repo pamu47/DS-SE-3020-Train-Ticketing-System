@@ -4,8 +4,8 @@ const reservations = express.Router()
 const Booking = require('../models/Reservation')
 
 //Setting up twilio for sending a text when a reservation occurs
-const accountSid = 'AC2285c402a8db5262edec637217f0a313';
-const authToken = 'bc13f91ff8eec6d701d229cbb4ff1257';
+const accountSid = 'replace with Account Sid';
+const authToken = ' replace with your Auth token';
 const client = require('twilio')(accountSid, authToken);
 
 
